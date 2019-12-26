@@ -1,0 +1,95 @@
+{% set status = "account" %}
+
+{% extends "layout.html" %}
+
+{% block title %}
+    Account
+{% endblock %}
+
+{% block main %}
+
+    <form id="account" action="/account" method="post" enctype="multipart/form-data">
+        <div class="form-group row">
+          <div class="col-5"> 
+            <label for="firstnameinput">First Name</label>
+            <input type="text" class="form-control" id="firstnameinput" name="firstnameinput" placeholder="{{ firstname }}">
+          </div>
+          <div class="col-5">
+            <label for="lastnameinput">Last Name</label>
+            <input type="text" class="form-control" id="lastnameinput" name="lastnameinput" placeholder="{{ lastname }}">              
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-5">
+            <label for="emailinput">Email address</label>
+            <input type="email" class="form-control" id="emailinput" name="emailinput" placeholder="{{ email }}">
+          </div>
+          <div class="col-5">
+              <label for="phoneinput">Phone number</label>
+              <input type="text" class="form-control" id="phoneinput" name="phoneinput" placeholder="{{ phone }}">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-5">
+            <label for="inputgroupusername">Username</label>
+            <div class="input-group" id="inputgroupusername">
+              <div class="input-group-prepend">
+                <div class="input-group-text">@</div>
+              </div>
+              <input type="text" class="form-control" id="usernameinput" name="usernameinput" placeholder="{{ user_name }}" aria-label="example" aria-describedby="btnGroupAddon">
+            </div>
+          </div>
+          <div class="col-2">
+            <label>Date of Birth</label>
+            <input type="text" class="form-control" id="dofbinput1" name="dofbinput1" placeholder="{{ dofb }}" readonly>
+          </div>
+          <div class="col-3">
+              <label>Choose Date:</label>
+              <input type="date" class="form-control" id="dofbinput" name="dofbinput" placeholder="{{ dofb }}">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-5">
+            <label for="imageinput">Choose profile image</label>
+            <input type="file" class="form-control-file" id="imageinput" name="imageinput">               
+          </div>
+        </div>
+        <br>
+        
+        <div class="needs-validation" novalidate>
+          <label for="confirmpasswordinputrow">Confirm Password</label>
+           <div class="form-group row" id="confirmpasswordinputrow">
+            <div class="col-4">
+              <input type="password" class="form-control" id="confirmpassword" name="confirmpassword" placeholder="Enter current password" required>          
+            </div>
+            <div class="col-4">
+              <button name="account" class="btn btn-secondary" type="submit">Update</button>
+            </div>
+          </div>
+        </div>
+    </form>
+
+    <br>
+
+    <form id="account_password" action="/account" method="post">
+        <div class="needs-validation" novalidate>
+          <label for="passwordinputrow"><h6>Change Password</h6></label>
+          <div class="form-group row" id="passwordinputrow">
+            <div class="col-4">
+              <input type="password" class="form-control" id="currentpasswordinput" name="currentpasswordinput" placeholder="Enter current password" required>          
+            </div>
+            <div class="col-4">
+              <input type="password" class="form-control" id="newpasswordinput" name="newpasswordinput" placeholder="Enter new password" required>          
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <button name="changepassword" class="btn btn-secondary" type="submit">Change</button>
+        </div>
+    </form>
+
+{% endblock %}

@@ -1,0 +1,181 @@
+.last-seen .activity-user{
+  padding: 20px 0;
+  border-top: 1px solid #f1f2f2;
+  border-bottom: 1px solid #f1f2f2;
+  margin-bottom: 20px;
+}
+
+img.profile-photo-lg{
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+}
+
+.avatar {
+  vertical-align: middle;
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+}
+
+#bio
+{
+  height:226px;
+  font-size:12pt;
+  resize: none;
+}
+
+
+/* CHAT STYLES */
+
+/* GENERAL SECTION */
+/* Div #1 (main container - controls others) */
+.container {
+  max-width: 1170px; 
+  margin: auto;
+}
+
+/* Div #2 (square outside the chat) */
+.square {
+  border: 10px solid #9b9c99;
+  clear: both;
+  overflow: hidden;
+}
+
+/* Div #3 (messages, their width and so on) */
+.box {
+  float: left;
+  padding: 15px;
+  width: 1030px;
+}
+
+/* Div #4 (height of message box) */
+.message_box {
+  height: 516px;
+  overflow-y: auto;
+} 
+
+/* Style for image can harm main images (be careful) */
+img{ 
+  max-width: 100%;
+}
+
+
+/* INBOX SECTION */
+/* For image in inbox messages */
+.inbox_image {
+  display: inline-block;
+  width: 6%;
+  border-radius: 50px;
+  overflow: hidden;
+  perspective: 1px;
+}
+
+/* Inbox */
+.inbox {
+  display: inline-block;
+  padding: 0 0 0 10px;
+  vertical-align: top;
+  width: 92%;
+ }
+
+ /* Inbox message (general) */
+.inbox_message { 
+  width: 57%;
+}
+
+ /* Inbox message for <p> */
+ .inbox_message p {
+  background: #ebebeb none repeat scroll 0 0;
+  border-radius: 3px;
+  color: #646464;
+  font-size: 17px;
+  margin: 0;
+  padding: 5px 10px 5px 12px;
+  width: 100%;
+}
+
+/* Date and time of message for inbox message */
+.inbox_date {
+  color: #747474;
+  display: block;
+  font-size: 12px;
+  margin: 8px 0 0;
+}
+
+
+/* OUTBOX SECTION */
+/* For image in outbox messages */
+.outbox_image {
+  float: right;
+  width: 6%;
+  border-radius: 50px;
+  overflow: hidden;
+  perspective: 1px;
+}
+
+/* Outbox */
+.outbox { 
+  overflow: hidden; 
+  margin: 26px 0 26px;
+}
+
+/* Outbox message (general) */
+.outbox_message {
+  float: right;
+  width: 46%;
+  padding-right: 15px;
+}
+
+/* Outbox message for <p> */
+ .outbox_message p {
+  background: #05728f none repeat scroll 0 0;
+  border-radius: 3px;
+  font-size: 17px;
+  margin: 0; color:#fff;
+  padding: 5px 10px 5px 12px;
+  width: 100%;
+  text-align: right;
+}
+
+/* Date and time of message for outbox message */
+.outbox_date {
+  color: #747474;
+  display: block;
+  font-size: 12px;
+  margin: 8px 0 0;
+  float: right;
+}
+
+
+/* INPUT SECTION */
+/* Input box */
+.input_box { 
+  border-top: 1px solid #c4c4c4;
+  position: relative;
+}
+
+/* Changes only for <input> tag */
+.type_form input {
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+  border: medium none;
+  color: #4c4c4c;
+  font-size: 17px;
+  min-height: 48px;
+  width: 100%;
+}
+
+/* Button to sent message */
+.input_button {
+  background: #204922 none repeat scroll 0 0;
+  border: medium none;
+  border-radius: 25px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 18px;
+  height: 33px;
+  position: absolute;
+  right: 0;
+  top: 11px;
+  width: 80px;
+}

@@ -1,0 +1,80 @@
+{% set status = "search" %}
+
+{% extends "layout.html" %}
+
+{% block title %}
+    Search
+{% endblock %}
+
+{% block main %}
+    <script>
+        $(document).ready(function(){
+            $("#nickname_search").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+            $("#friends_table tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+            });
+        });
+    </script>
+
+
+    <label for="nickname_search" style="color:orangered"><b>Find new friends!</b></label>
+    <input class="form-control col-8" id="nickname_search" type="text" placeholder="Enter something!">
+    <i>You can search for whatever you want (nickname, favorite game, location of user and so on...)</i>
+
+    <br><br>
+    <h1 style="color:olivedrab">Gamers:</h1>
+
+    <form id="search" action="/search" method="post">
+        <table>
+            <tbody id="friends_table">
+                {% for i in all_users %}
+                    {% for j in all_profiles %}
+                        {% if i[0] == j[0] %}
+                            <tr>
+                                <td width="30%">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <div class="last-seen">
+                                                    <div class="activity-user" style="background-color:whitesmoke;">
+                                                        <div class="row">
+                                                            <div class="col-md-2 col-sm-2">
+                                                                <img src="static/avatar/{{ i[8] }}" alt="{{ i[1] }}" class="profile-photo-lg">
+                                                                {% if j[1] == online%}
+                                                                    <p style="color:green">&nbsp;&nbsp;&nbsp;<b>Online</b></p>
+                                                                {% else %}
+                                                                    <p style="color:silver">&nbsp;&nbsp;&nbsp;<b>Offline</b></p>
+                                                                {% endif %}
+                                                            </div>
+                                                            <div class="col-md-7 col-sm-7">
+                                                                <h5><a href="#" class="profile-link"><b style="font-size: 28px;"> {{ i[1] }} </b></a></h5>
+                                                                {% for k in all_games %}
+                                                                    {% if j[6] == k[0] %}
+                                                                        <b style="color:blueviolet;">Favorite Game:</b> {{ k[2] }} <br>
+                                                                    {% endif %}
+                                                                {% endfor %}
+                                                                <b style="color:cornflowerblue;">Location:</b> {{ j[2] }} <br>
+                                                                <b style="color:maroon;">Language:</b> {{ j[3] }} <br>
+                                                                <b style="color:tomato;">Second Language:</b> {{ j[4] }} <br>
+                                                            </div>
+                                                            <div class="col-md-3 col-sm-3">
+                                                                <button class="btn btn-success" name="user_id_{{ i[0] }}">Add</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </form>
+
+{% endblock %}

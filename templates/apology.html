@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Apology
+{% endblock %}
+
+{% block main %}
+        <div style="text-align: center;font-family: 'Courier New', Courier, monospace;font-size: 35px;">Error: {{ top }}</div>
+        <div class="text-center">
+            <img src="static/apology.jpg" class="img-fluid" alt="apology image">
+        </div>
+        <div style="text-align: center;font-family: 'Courier New', Courier, monospace;font-size: 35px;">Reason: {{ bottom }}</div>
+{% endblock %}

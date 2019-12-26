@@ -1,0 +1,72 @@
+{% set status = "games" %}
+
+{% extends "layout.html" %}
+
+{% block title %}
+    Games
+{% endblock %}
+
+{% block main %}
+
+    <form id="games" action="/games" method="post">
+        {% set index = 0 %}
+        {% for i in range(a) %}
+            <div class="form-group row">
+                {% if i == first_a %}
+                    {% for j in range(b) %}
+
+                        {% set index = i * 2 + j + i %}
+                        {% set gameid = games[index][0] %}
+                        {% set photo = games[index][1] %}
+                        {% set title = games[index][2] %}
+                        {% set text = games[index][3] %}
+                        {% set href = games[index][4] %}
+                    
+                        <div class="card" style="width: 18rem;">
+                            <img src="static/games/{{ photo }}" class="card-img-top" alt="{{ title }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ title }}</h5>
+                                <p class="card-text">{{ text }}</p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="{{ href }}" class="btn btn-primary btn-sm">Check official page</a>
+                                <button name="{{gameid}}" type="submit" class="btn btn-success btn-sm" style="float: right;">Add to profile</button>
+                            </div>
+                        </div>
+
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+
+                    {% endfor %}
+
+                {% else %}
+                    {% for j in range(3) %}
+
+                        {% set index = i * 2 + j + i %}
+                        {% set gameid = games[index][0] %}
+                        {% set photo = games[index][1] %}
+                        {% set title = games[index][2] %}
+                        {% set text = games[index][3] %}
+                        {% set href = games[index][4] %} 
+                        
+                        <div class="card" style="width: 18rem;">
+                            <img src="static/games/{{ photo }}" class="card-img-top" alt="{{ title }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ title }}</h5>
+                                <p class="card-text">{{ text }}</p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="{{ href }}" class="btn btn-primary btn-sm">Check official page</a>
+                                <button name="{{gameid}}" type="submit" class="btn btn-success btn-sm" style="float: right;">Add to profile</button>
+                            </div>
+                        </div>
+
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+
+                    {% endfor %}
+
+                {% endif %}     
+            </div>
+        {% endfor %}
+    </form>
+
+{% endblock %}

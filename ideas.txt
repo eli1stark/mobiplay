@@ -1,0 +1,8 @@
+1) add clans (teams)
+2) consider whether it will be messenger or complete social network for mobile and pc gamers
+3) there will be 3 modes (mobile, pc and console
+4) there will be communities like in reddit (some sort of publics) and post feed like in twitter
+5) there will be groups (some sort of clans)
+6) I can search for teammates (friends) like in facebook and add them to my friends by interests, 
+games, roles in specific games and so on
+7) forbidden unsuported formats and size of user's image

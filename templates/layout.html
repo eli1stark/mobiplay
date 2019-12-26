@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- documentation at http://getbootstrap.com/docs/4.1/, alternative themes at https://bootswatch.com/ -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+
+        <link href="/static/styles.css" rel="stylesheet">
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+        <!-- for chat -->
+
+
+
+        <title>Mobiplay: {% block title %}{% endblock %}</title>
+
+    </head>
+    
+    <body>
+        {% set user_name = session["user_name"] %}
+
+        {% if status == "register" %}
+            <div style="background-image: url('static/register.jpg');">
+        {% elif status == "login" %}
+            <div style="background-image: url('static/login.jpg');">
+        {% elif status == "index" %}
+            <div style="background-image: url('static/index.png');">
+        {% else %}
+            
+        {% endif %}
+
+        <nav class="navbar navbar-expand-md navbar-light bg-light border">
+            <a class="navbar-brand" href="/">
+                <img src="/static/logo.png" width="30" height="30" alt="logo.png">
+                Mobiplay
+            </a>
+            <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbar" data-toggle="collapse" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar">
+                {% if session.user_id %}
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active"><a class="nav-link" href="/">Chat <span class="sr-only">(current)</span></a></li>
+                        <li class="nav-item"><a class="nav-link" href="/mates">Teammates</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/profile">Profile</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/search">Search</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/games">Games</a></li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Hello, {{ user_name }}
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right"  aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/account">Account</a>
+                                <a class="dropdown-item" href="/settings">Settings</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/logout">Log out</a>
+                            </div>
+                        </li>
+                    </ul>
+                {% else %}
+                    <ul class="navbar-nav ml-auto mt-2">
+                        <li class="nav-item"><a class="nav-link" href="/register">Join Us</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/login">Sign In</a></li>
+                    </ul>
+                {% endif %}
+            </div>
+        </nav>
+
+        {% if get_flashed_messages() %}
+            <header>
+                <div class="alert alert-primary border text-center" role="alert">
+                    {{ get_flashed_messages() | join(" ") }}
+                </div>
+            </header>
+        {% endif %}
+
+        <main class="container p-5">
+            {% block main %}{% endblock %}
+        </main>
+
+        <br><br><br><br><br><br><br><br>
+        
+        {% if status == "register" or status == "login" %}
+            <footer class="small text-center text-muted">
+                <h5 style="color:white;font-family:Comic Sans MS, cursive, sans-serif;font-size:25px;">Free messanger for mobile gamers!</h5>
+            </footer>
+            <br><br>
+        {% else %}
+            
+        {% endif %}
+
+    </body>
+
+</html>

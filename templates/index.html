@@ -1,0 +1,109 @@
+{% set status = "index" %}
+
+{% extends "layout.html" %}
+
+{% block title %}
+    Chat
+{% endblock %}
+
+{% block main %}
+{{ mateid }}
+{{ message }}
+
+    {% for i in all_users_update %}
+        {% for j in all_profiles_update %}
+            {% if i[0] == j[0] %}
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="last-seen">
+                                <div class="activity-user">
+                                    <div class="row">
+                                        <div class="col-md-2 col-sm-2">
+                                            <img src="static/avatar/{{ i[8] }}" alt="{{ i[1] }}" class="profile-photo-lg">
+                                        </div>
+                                        <div class="col-md-7 col-sm-7">
+                                            <h5><a href="#" class="profile-link"><b style="font-size: 28px; color:white"> {{ i[1] }} </b></a></h5>
+                                            {% for k in all_games %}
+                                                {% if j[6] == k[0] %}
+                                                    <b style="color:blueviolet;">Favorite Game:</b> <b style="color:wheat"> {{ k[2] }} </b> <br>
+                                                {% endif %}
+                                            {% endfor %}
+                                            
+                                            {% if j[1] == online %}
+                                                <p style="color:green"><b>Online</b></p>
+                                            {% else %}
+                                                <p style="color:silver"><b>Offline</b></p>
+                                            {% endif %}
+                                        </div>
+                                        <div class="col-md-3 col-sm-3">
+                                            <br><br>
+                                            <p>
+                                                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#{{outbox_username}}_{{i[1]}}" aria-expanded="false" aria-controls="collapseExample">
+                                                    Chat
+                                                </button>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            
+                <div class="collapse" id="{{outbox_username}}_{{i[1]}}">
+                    <form id="{{user_id}}_{{i[0]}}" action="/" method="post">
+                        <div class="container">
+                            <div class="square">
+                                <div class="box">
+                                    <div class="message_box" id="message_box">
+
+                                        {% for k in chat %}
+                                            {% if k[0] == user_id and k[1] == i[0] %}
+
+                                                <div class="outbox">
+                                                    <div class="outbox_image"> <img src="static/avatar/{{ outbox_photo }}" alt="{{outbox_username}}"> </div>
+                                                    <div class="outbox_message">
+                                                        <p>{{ k[2] }}</p>
+                                                        <span class="outbox_date">{{ k[3] }}</span> 
+                                                    </div>   
+                                                </div>
+
+                                            {% endif %}
+
+                                            {% if k[0] == i[0] and k[1] == user_id %}
+
+                                                <div class="inbox_image"> <img src="static/avatar/{{ i[8] }}" alt="{{ i[1] }}"> </div>
+                                                <div class="inbox">
+                                                    <div class="inbox_message">
+                                                        <p> {{ k[2] }} </p>
+                                                        <span class="inbox_date">{{ k[3] }}</span>
+                                                    </div>
+                                                </div>
+
+                                            {% endif %}
+                                        {% endfor %}
+
+                                    </div>
+                                    
+            
+                                    <div class="input_box">
+                                        <div class="type_form">
+                                            <input type="text" class="write_msg" style="color:white;" autocomplete="off" placeholder="Type a message" name="message">
+                                            <button class="input_button" name="send_message_{{user_id}}_{{i[0]}}">Send</button>
+                                        </div>
+                                    </div>
+            
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+
+{% endblock %}
