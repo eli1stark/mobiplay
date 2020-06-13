@@ -1,5 +1,5 @@
 The project made for CS50's final project.
-This is a web-based messenger for gamers and which is called Mobiplay.
+This is a web-based messenger for gamers which is called Mobiplay.
 
 I considered implementing this project on the web, using a tech stack that I went through CS50 course, namely Python, Flask, Jinja2, Bootstrap, SQLite 3, HTML5, CSS 3, and a little bit of JavaScript. Unfortunately, Mobiplay is suited only for desktops, laptops and tablets, it's optimized very badly for phones. What about the code part?
 
